@@ -130,6 +130,7 @@ public class ButtonScriptCustom : MonoBehaviour
             
             if (typeVar == type.problem)
             {
+                SoundManagerScript.mInstance.PlaySFX(AudioClipID.SFX_MOUSE_CLICK);
                 bool error = false;
                 for (int i = 0; i < resourceOnClickDrain.Length; i++)
                 {
@@ -160,6 +161,7 @@ public class ButtonScriptCustom : MonoBehaviour
             }
             else if(typeVar == type.opportunity)
             {
+                SoundManagerScript.mInstance.PlaySFX(AudioClipID.SFX_MOUSE_CLICK);
                 currentVal += increaseChange + tempGameVal;
                 if (currentVal >= goalVal)
                 {
@@ -170,6 +172,7 @@ public class ButtonScriptCustom : MonoBehaviour
             }
             else
             {
+                SoundManagerScript.mInstance.PlaySFX(AudioClipID.SFX_CASH);
                 bool error = false;
                 for (int i = 0; i < resourceOnClickDrain.Length; i++)
                 {

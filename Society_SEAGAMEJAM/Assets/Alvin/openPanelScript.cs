@@ -30,6 +30,7 @@ public class openPanelScript : MonoBehaviour
 
     public void onClickChange()
     {
+        SoundManagerScript.mInstance.PlaySFX(AudioClipID.SFX_MOUSE_CLICK);
         if(isOpen)
         {
             gameManagerScript.changeText(name, "Open");
