@@ -7,29 +7,22 @@ namespace Naren
 {
     public class UIGameplayManagerBehaviour : MonoBehaviour
     {
+        ExampleData exampleData;
+
         [SerializeField] Text moneyText;
-        int currentMoney = 0;
-
         [SerializeField] Text timeText;
-        int currentMonth = 0;
-        [SerializeField] int maxMonthPerYear = 4;
-        int currentYear = 5;
-        [SerializeField] int deathYear = 68;
 
-        private void Start()
+        [SerializeField] GameObject dreamPanel;
+
+        private void Awake()
         {
-            BaseGameManager.OnNextTurn += OnNextTurn;
+            exampleData = GetComponent<ExampleData>();
         }
 
         private void Update()
         {
-            moneyText.text = currentMoney + " Rupee";
-            timeText.text = (currentMonth * (12 / maxMonthPerYear)) + " month " + currentYear + " years";
-        }
-
-        private void OnNextTurn()
-        {
-
+            moneyText.text = exampleData.currentMoney + " Rupee";
+            timeText.text = exampleData.currentAge + " / " + exampleData.maxAge + " years";
         }
     }
 }
