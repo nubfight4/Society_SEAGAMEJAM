@@ -12,6 +12,8 @@ enum JobType
     TOTAL = 9001
 }
 
+
+
 public class ButtonScript : MonoBehaviour {
     #region Variables
     //Player Variables
@@ -28,8 +30,6 @@ public class ButtonScript : MonoBehaviour {
 
     //Work Variables
     JobType currentJob;
-    bool jobOne = true;
-    bool jobTwo = false;
     string jobDescription;
     float currentWorkClicks = 0.0f;
     float WorkClicksNeeded;
@@ -41,15 +41,7 @@ public class ButtonScript : MonoBehaviour {
     public Text dreamText;
     public Text workButtonText;
     public Image dreamBar;
-
-    //One-off example Button
-    bool problemOneExist = false;
-    bool problemOneSolved = false;
-    float problemOneValue = 5.0f;
-    float moneyRequiredProblemOne = 10.0f;
-    public GameObject problemOneButton;
     #endregion
-
     #region Timers Variable
 
     //Age Timer
@@ -74,7 +66,6 @@ public class ButtonScript : MonoBehaviour {
 
     private void Update()
     {
-
         #region Work Function
         if(currentJob == JobType.WAITER)
         {
@@ -96,20 +87,6 @@ public class ButtonScript : MonoBehaviour {
         }
         #endregion
 
-        #region One-off Problem example
-        if(problemOneSolved || age < 5)
-        {
-            problemOneButton.SetActive(false);
-        }
-
-        if(age >= 5 && !problemOneSolved && !problemOneExist)
-        {
-            problemOneExist = true;
-            maxAge -= problemOneValue;
-            problemOneButton.SetActive(true);
-        }
-        #endregion
-
         #region UI stuff
 
         moneyText.text = money.ToString();
@@ -117,7 +94,7 @@ public class ButtonScript : MonoBehaviour {
         dreamText.text = currentDreamValue.ToString() + " / " + maxDreamValue.ToString();
         workButtonText.text = jobDescription + "  " + currentWorkClicks.ToString() + " / " + WorkClicksNeeded.ToString();
         dreamBar.fillAmount = currentDreamValue / maxDreamValue;
-        
+
         #endregion
 
         #region Health Function
@@ -167,16 +144,4 @@ public class ButtonScript : MonoBehaviour {
             currentWorkClicks++;
         }
     }
-
-    public void ProblemOneButtonFunction()
-    {
-        if(money >= moneyRequiredProblemOne)
-        {
-            money -= moneyRequiredProblemOne;
-            maxAge += problemOneValue;
-            problemOneSolved = true;
-            problemOneExist = false;
-        }
-    }
 }
-
