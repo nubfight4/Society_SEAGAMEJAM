@@ -250,7 +250,7 @@ MonoBehaviour:
   goalVal: 100
   mainValueGain: 00000000
   resourceOnClick: []
-  valueChangePerClick: 
+  valueChangePerClick: 0f000000
   resourceOnClickDrain:
   - Money
   valueChangePerClickDrain: 9cffffff
@@ -259,7 +259,7 @@ MonoBehaviour:
   buff: 1
   buffEffect:
   - DreamsBuff
-  buffEffectChange: 0a000000
+  buffEffectChange: 01000000
 --- !u!114 &114647842792455082
 MonoBehaviour:
   m_ObjectHideFlags: 1

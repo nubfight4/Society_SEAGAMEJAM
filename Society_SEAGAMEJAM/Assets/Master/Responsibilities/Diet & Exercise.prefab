@@ -389,7 +389,7 @@ MonoBehaviour:
   goalVal: 100
   mainValueGain: 00000000
   resourceOnClick: []
-  valueChangePerClick: 
+  valueChangePerClick: 0f000000
   resourceOnClickDrain:
   - Money
   valueChangePerClickDrain: 9cffffff

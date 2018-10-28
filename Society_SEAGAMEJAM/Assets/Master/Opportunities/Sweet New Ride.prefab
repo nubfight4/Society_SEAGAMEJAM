@@ -151,7 +151,7 @@ MonoBehaviour:
   sliderObj: {fileID: 114823093174448116}
   responsibilitySpawn: 1
   responsibilityIndex: 4
-  valueChangePerClick: c4090000
+  valueChangePerClick: 00000000
   resourceOnClick:
   - Dream
   oneTimeThing: 0

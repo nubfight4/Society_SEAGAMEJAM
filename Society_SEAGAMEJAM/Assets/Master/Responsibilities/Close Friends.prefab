@@ -223,7 +223,7 @@ MonoBehaviour:
   goalVal: 100
   mainValueGain: 00000000
   resourceOnClick: []
-  valueChangePerClick: 
+  valueChangePerClick: 0f000000
   resourceOnClickDrain:
   - Money
   valueChangePerClickDrain: 9cffffff
@@ -232,7 +232,7 @@ MonoBehaviour:
   buff: 1
   buffEffect:
   - OpportunityBuff
-  buffEffectChange: 02000000
+  buffEffectChange: 01000000
 --- !u!114 &114368768021316408
 MonoBehaviour:
   m_ObjectHideFlags: 1

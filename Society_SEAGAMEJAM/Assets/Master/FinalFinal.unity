@@ -1695,7 +1695,7 @@ MonoBehaviour:
   CharacterJob2Img: {fileID: 21300000, guid: e430b6ba56c67674aa1b42bc052a3846, type: 3}
   CharacterJob3Img: {fileID: 21300000, guid: e2060a1709fdefe4facb05b94bdd6dfa, type: 3}
   age: 0
-  timeToAge: 60
+  timeToAge: 3
   disasterTriggers: []
   maxDisaster: 5
   sliderObj: {fileID: 649055112}
@@ -2217,14 +2217,15 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1505901530}
   m_Father: {fileID: 1365248366}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 664, y: 0}
+  m_SizeDelta: {x: 664, y: 310}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &913335974
 MonoBehaviour:
@@ -2558,7 +2559,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1365248366}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2897,20 +2898,18 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 45c29920c850b6a40afa5fe07924190c, type: 3}
-    m_FontSize: 24
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 2
-    m_MaxSize: 28
+    m_MaxSize: 30
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
-    Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
-    Text '
+  m_Text: Go out and sieze the day!
 --- !u!222 &1036111248
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2935,7 +2934,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -233.7, y: -14.8}
+  m_AnchoredPosition: {x: -233.7, y: -38}
   m_SizeDelta: {x: 473.4, y: 105.6}
   m_Pivot: {x: 0, y: 0}
 --- !u!1 &1101695897
@@ -3277,7 +3276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManagerScript: {fileID: 0}
-  gameEffectName: DreamsBuff
+  gameEffectName: N/A
   gameEffectNameModifier: N/A
   gameEffectNameTimer: N/A
   increaseChange: 1
@@ -3590,7 +3589,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1288115134
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3732,8 +3731,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 913335973}
   - {fileID: 981280017}
+  - {fileID: 913335973}
   m_Father: {fileID: 1261285674}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4169,8 +4168,7 @@ MonoBehaviour:
   sliderObjBase: {fileID: 1528277696}
   textObj: {fileID: 2067475387}
   Title: Opportunities
-  fluffText: Opportunities come and go, but aint nothing gonna drop out of the sky
-    for your lazy ass, go get up and go seek out some
+  fluffText: Go out and sieze the day!
   TitleObj: {fileID: 144346209}
   fluffTextObj: {fileID: 1036111247}
   costTextObj: {fileID: 0}
@@ -4178,7 +4176,7 @@ MonoBehaviour:
   typeVar: 1
   problemIndex: 0
   currentVal: 0
-  goalVal: 5
+  goalVal: 30
   mainValueGain: 01000000
   resourceOnClick:
   - Money
@@ -4280,6 +4278,116 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1486815840}
   m_CullTransparentMesh: 0
+--- !u!1001 &1505901529
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 913335973}
+    m_Modifications:
+    - target: {fileID: 224009520701304684, guid: ff99ba035f63c4c44a960ae08a3c32b6,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224009520701304684, guid: ff99ba035f63c4c44a960ae08a3c32b6,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224009520701304684, guid: ff99ba035f63c4c44a960ae08a3c32b6,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224009520701304684, guid: ff99ba035f63c4c44a960ae08a3c32b6,
+        type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224009520701304684, guid: ff99ba035f63c4c44a960ae08a3c32b6,
+        type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224009520701304684, guid: ff99ba035f63c4c44a960ae08a3c32b6,
+        type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224009520701304684, guid: ff99ba035f63c4c44a960ae08a3c32b6,
+        type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224009520701304684, guid: ff99ba035f63c4c44a960ae08a3c32b6,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224009520701304684, guid: ff99ba035f63c4c44a960ae08a3c32b6,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224009520701304684, guid: ff99ba035f63c4c44a960ae08a3c32b6,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224009520701304684, guid: ff99ba035f63c4c44a960ae08a3c32b6,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224009520701304684, guid: ff99ba035f63c4c44a960ae08a3c32b6,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224009520701304684, guid: ff99ba035f63c4c44a960ae08a3c32b6,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224009520701304684, guid: ff99ba035f63c4c44a960ae08a3c32b6,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224009520701304684, guid: ff99ba035f63c4c44a960ae08a3c32b6,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224009520701304684, guid: ff99ba035f63c4c44a960ae08a3c32b6,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224009520701304684, guid: ff99ba035f63c4c44a960ae08a3c32b6,
+        type: 2}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224009520701304684, guid: ff99ba035f63c4c44a960ae08a3c32b6,
+        type: 2}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114861550106909192, guid: ff99ba035f63c4c44a960ae08a3c32b6,
+        type: 2}
+      propertyPath: countDown
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ff99ba035f63c4c44a960ae08a3c32b6, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!224 &1505901530 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 224009520701304684, guid: ff99ba035f63c4c44a960ae08a3c32b6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1505901529}
 --- !u!1 &1515308375
 GameObject:
   m_ObjectHideFlags: 0
@@ -4384,7 +4492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManagerScript: {fileID: 0}
   gameEffectName: DreamsBuff
-  gameEffectNameModifier: N/A
+  gameEffectNameModifier: DreamsBuff
   gameEffectNameTimer: N/A
   increaseChange: 1
   sliderObj: {fileID: 649055112}
@@ -4403,10 +4511,10 @@ MonoBehaviour:
   mainValueGain: 01000000
   resourceOnClick:
   - Dream
-  valueChangePerClick: 64000000
+  valueChangePerClick: 0a000000
   resourceOnClickDrain:
   - Money
-  valueChangePerClickDrain: f6ffffff
+  valueChangePerClickDrain: 9cffffff
   bleedSpeed: 0.5
   valueDrain: 00000000
   buff: 0
@@ -4517,7 +4625,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -40}
+  m_AnchoredPosition: {x: 0, y: -16}
   m_SizeDelta: {x: 500, y: 18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1538119806
@@ -4942,7 +5050,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -40}
+  m_AnchoredPosition: {x: 0, y: -16}
   m_SizeDelta: {x: 500, y: 18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1784413210
@@ -4981,7 +5089,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 4}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 664, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1784413212
@@ -6067,7 +6175,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 45c29920c850b6a40afa5fe07924190c, type: 3}
-    m_FontSize: 24
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -6103,7 +6211,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -70}
+  m_AnchoredPosition: {x: 0, y: -63}
   m_SizeDelta: {x: 493.5, y: 72.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2128104815

@@ -356,13 +356,13 @@ MonoBehaviour:
   fluffTextObj: {fileID: 0}
   costTextObj: {fileID: 0}
   countDown: 1
-  typeVar: 2
+  typeVar: 7
   problemIndex: 6
   currentVal: 100
   goalVal: 100
   mainValueGain: 00000000
   resourceOnClick: []
-  valueChangePerClick: 
+  valueChangePerClick: 0f000000
   resourceOnClickDrain:
   - Money
   valueChangePerClickDrain: 9cffffff

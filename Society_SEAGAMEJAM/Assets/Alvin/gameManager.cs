@@ -54,14 +54,14 @@ public class gameManager : MonoBehaviour
     void Awake()
     {
         values.Add("Dream", 0);
-        values.Add("DreamGoal", 25000);
+        values.Add("DreamGoal", 1000);
         changeText("Dream", values["Dream"].ToString());
         changeText("DreamGoal", values["DreamGoal"].ToString());
 
-        values.Add("Money", 50000);
+        values.Add("Money", 500);
         changeText("Money", values["Money"].ToString());
-        values.Add("Health", 18);
-        values.Add("HealthCap", 80);
+        values.Add("Health", 15);
+        values.Add("HealthCap", 75);
         changeText("Health", values["Health"].ToString() + "/" + values["HealthCap"].ToString());
 
         values.Add("JobTitle", "NEET");
@@ -215,7 +215,7 @@ public class gameManager : MonoBehaviour
             case 1:
                 values["JobTitle"] = "Waiter";
                 values["Salary"] = 100;
-                values["jobGoal"] = 25;
+                values["jobGoal"] = 10;
                 values["JobFluff"] = "Not a glorious job, but it pays";
                 jobImage.sprite = Job1Img;
                 characterImage.sprite = CharacterJob1Img;
@@ -223,15 +223,15 @@ public class gameManager : MonoBehaviour
             case 2:
                 values["JobTitle"] = "Office";
                 values["Salary"] = 500;
-                values["jobGoal"] = 50;
+                values["jobGoal"] = 20;
                 values["JobFluff"] = "Pencil pushers get a decent pay!";
                 jobImage.sprite = Job2Img;
                 characterImage.sprite = CharacterJob2Img;
                 break;
             case 3:
                 values["JobTitle"] = "Entrepreneur";
-                values["Salary"] = 1000;
-                values["jobGoal"] = 100;
+                values["Salary"] = 2500;
+                values["jobGoal"] = 50;
                 values["JobFluff"] = "This is it, as big as you are gonna get";
                 jobImage.sprite = Job3Img;
                 characterImage.sprite = CharacterJob3Img;

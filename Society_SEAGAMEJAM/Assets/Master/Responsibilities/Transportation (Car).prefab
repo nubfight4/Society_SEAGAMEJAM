@@ -331,13 +331,13 @@ MonoBehaviour:
   fluffTextObj: {fileID: 0}
   costTextObj: {fileID: 0}
   countDown: 1
-  typeVar: 2
+  typeVar: 7
   problemIndex: 6
   currentVal: 100
   goalVal: 100
   mainValueGain: 00000000
   resourceOnClick: []
-  valueChangePerClick: 
+  valueChangePerClick: 0f000000
   resourceOnClickDrain:
   - Money
   valueChangePerClickDrain: 9cffffff
@@ -346,7 +346,7 @@ MonoBehaviour:
   buff: 1
   buffEffect:
   - WorkBuff
-  buffEffectChange: 0a000000
+  buffEffectChange: 01000000
 --- !u!114 &114666582662500420
 MonoBehaviour:
   m_ObjectHideFlags: 1
