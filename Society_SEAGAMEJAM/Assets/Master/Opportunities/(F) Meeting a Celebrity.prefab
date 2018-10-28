@@ -253,17 +253,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   opButton: {fileID: 0}
   bleedSpeed: 1
-  currentVal: 3
-  goalVal: 3
+  currentVal: 10
+  goalVal: 10
   gameManagerScript: {fileID: 0}
   sliderObj: {fileID: 114903977727232372}
   responsibilitySpawn: 0
   responsibilityIndex: 0
-  valueChangePerClick: 10270000
+  valueChangePerClick: c4090000
   resourceOnClick:
   - Dream
-  oneTimeThing: 1
+  oneTimeThing: 0
   thisIndex: 0
+  JobChange: 0
+  JobChangeIndex: 0
 --- !u!114 &114895729483165910
 MonoBehaviour:
   m_ObjectHideFlags: 1

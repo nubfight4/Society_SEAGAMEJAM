@@ -190,11 +190,6 @@ MonoBehaviour:
   valueChangePerClick: 00000000
   resourceOnClick:
   - Money
-  title: Shia Suprise
-  flufftext: He isn't dead, Shia suprise! There is blood on his hands, and death in
-    his eyes!
-  opportunitiesTitleText: {fileID: 0}
-  opportunitiesFluffText: {fileID: 0}
   oneTimeThing: 1
   thisIndex: 0
 --- !u!114 &114387787007595746

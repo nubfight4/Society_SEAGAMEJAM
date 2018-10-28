@@ -323,10 +323,8 @@ MonoBehaviour:
   valueChangePerClick: 64000000
   resourceOnClick:
   - Money
-  title: Getting hit on the head
-  flufftext: Allow me to hit you in the head for 100 monez?
-  opportunitiesTitleText: {fileID: 0}
-  opportunitiesFluffText: {fileID: 0}
+  oneTimeThing: 0
+  thisIndex: 0
 --- !u!114 &114660191872565120
 MonoBehaviour:
   m_ObjectHideFlags: 1
