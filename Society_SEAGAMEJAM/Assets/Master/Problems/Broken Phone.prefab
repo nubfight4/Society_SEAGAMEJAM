@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 224798211952012662}
   - component: {fileID: 222447674484921278}
   - component: {fileID: 114766566752487210}
+  - component: {fileID: 114197668593121560}
   m_Layer: 5
   m_Name: Broken Phone
   m_TagString: Untagged
@@ -125,6 +126,7 @@ GameObject:
   - component: {fileID: 222446090112070736}
   - component: {fileID: 114091414556842592}
   - component: {fileID: 114318156270613246}
+  - component: {fileID: 114947714208933864}
   m_Layer: 5
   m_Name: ResolveButton
   m_TagString: Untagged
@@ -186,6 +188,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114197668593121560
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1551683659794238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e38f32908c2474f975e34d8ae969ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openProbPanel: {fileID: 114947714208933864}
+  problemButtonObjectNameToFind: Problems Button
 --- !u!114 &114227683960613092
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -284,7 +299,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114091414556842592}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114947714208933864}
+        m_MethodName: onClickChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114197668593121560}
+        m_MethodName: DestroyPopUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114349157328397114
@@ -358,7 +395,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114149547287120370}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114197668593121560}
+        m_MethodName: DestroyPopUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114728575810057806
@@ -421,6 +469,23 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114947714208933864
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1653259266311860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b38a8e3c6620d304cbf927733e774c5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 0}
+  panelScript: {fileID: 0}
+  panelPos: {x: 0, y: 0, z: 0}
+  isOpen: 0
+  gameManagerScript: {fileID: 0}
+  name: ProbPanelButton
 --- !u!222 &222446090112070736
 CanvasRenderer:
   m_ObjectHideFlags: 1
