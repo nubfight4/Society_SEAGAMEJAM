@@ -45,6 +45,12 @@ public class gameManager : MonoBehaviour
     public Image sliderObj;
     public Image sliderObjBase;
 
+    void Update()
+    {
+        changeText("Salary", values["Salary"].ToString());
+        changeText("Health", values["Health"].ToString());
+    }
+
     void Awake()
     {
         values.Add("Dream", 0);
@@ -58,18 +64,22 @@ public class gameManager : MonoBehaviour
         values.Add("HealthCap", 80);
         changeText("Health", values["Health"].ToString() + "/" + values["HealthCap"].ToString());
 
-        values.Add("JobTitle", "Waiter");
-        values.Add("Salary", 100);
-        values.Add("jobGoal", 25);
-        values.Add("JobFluff", "Not a glorious job, but it pays");
+        values.Add("JobTitle", "NEET");
+        values.Add("Salary", 0);
+        values.Add("jobGoal", 100);
+        values.Add("JobFluff", "Wasting money, wasting time");
+        changeText("Salary", values["Salary"].ToString());
 
 
         values.Add("ProblemsCost", 0);
         values.Add("insuranceReduction", 0);
 
-        gamevalues.Add("WorkBuff", 0);
-        gamevalues.Add("WorkModifierBuff", 0);
+        values.Add("WorkBuff", 0);
+        values.Add("WorkModifierBuff", 0);
 
+        values.Add("DreamsBuff", 0);
+        values.Add("OpportunityBuff", 0);
+        
         values.Add("RespoCount", 0);
         changeText("RespoCount", "Active : " + values["RespoCount"].ToString());
 
@@ -122,7 +132,7 @@ public class gameManager : MonoBehaviour
 
     public void applyBuff(string buffname, int value)
     {
-        gamevalues[buffname] = int.Parse(gamevalues[buffname].ToString()) + value;
+        values[buffname] = int.Parse(values[buffname].ToString()) + value;
         //changeText(buffname, gamevalues[buffname].ToString());
     }
 
@@ -180,6 +190,10 @@ public class gameManager : MonoBehaviour
 
         GameObject newGameObject = Instantiate(stuffToInstantiate, new Vector3(), Quaternion.identity);
         newGameObject.transform.SetParent(gridGameObjProblems.transform);
+
+        GameObject newGameObject2 = Instantiate(despacitoEventRepo[index], new Vector3(0, -178, 0), Quaternion.identity);
+        newGameObject2.transform.SetParent(opportunityGameObj.transform, false);
+        newGameObject2.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -178, 0);
 
         values["ProblemCount"] = int.Parse(values["ProblemCount"].ToString()) + 1;
         changeText("ProblemCount", "Total : " + values["ProblemCount"].ToString());
@@ -240,6 +254,9 @@ public class gameManager : MonoBehaviour
         GameObject newGameObject = Instantiate(despacitoRepo[index], new Vector3(), Quaternion.identity);
         newGameObject.transform.SetParent(gridGameObjProblems.transform);
 
+        GameObject newGameObject2 = Instantiate(despacitoEventRepo[index], new Vector3(), Quaternion.identity);
+        newGameObject2.transform.SetParent(opportunityGameObj.transform,false);
+
         values["ProblemCount"] = int.Parse(values["ProblemCount"].ToString()) + 1;
         changeText("ProblemCount", "Total : " + values["ProblemCount"].ToString());
     }
@@ -259,9 +276,10 @@ public class gameManager : MonoBehaviour
         opportunityRepo[index] = null;
     }
 
-    public void removeProblems(int index)
+    public void removeProblems()
     {
-
+        values["ProblemCount"] = int.Parse(values["ProblemCount"].ToString()) - 1;
+        changeText("ProblemCount", "Total : " + values["ProblemCount"].ToString());
     }
 
     private IEnumerator AgeUp(float waitTime)

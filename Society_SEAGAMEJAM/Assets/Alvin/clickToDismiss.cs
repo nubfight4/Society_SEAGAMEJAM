@@ -34,7 +34,7 @@ public class clickToDismiss : MonoBehaviour {
 
     public bool JobChange;
     public int JobChangeIndex;
-
+    
     // Use this for initialization
     void Start ()
     {
@@ -81,7 +81,7 @@ public class clickToDismiss : MonoBehaviour {
                 gameManagerScript.modifyValue(resourceOnClick[i], valueChangePerClick[i]);
             }
 
-            //opButton.SetActive(true);
+            opButton.SetActive(true);
 
             if (oneTimeThing)
             {

@@ -29,7 +29,7 @@ public class ButtonScriptCustom : MonoBehaviour
 
     public bool countDown;
 
-    public enum type { problem, opportunity, killToProblem, FatalKill, Neutral, Dream, Job};
+    public enum type { problem, opportunity, killToProblem, FatalKill, Neutral, Dream, Job, respoDecay};
     public type typeVar;
     public int problemIndex;
 
@@ -52,6 +52,18 @@ public class ButtonScriptCustom : MonoBehaviour
     public string[] buffEffect = { "N/A" };
     public int[] buffEffectChange = { 0 };
 
+    void Update()
+    {
+        if (typeVar == type.Job)
+        {
+            Title = gameManagerScript.values["JobTitle"].ToString();
+            fluffText = gameManagerScript.values["JobFluff"].ToString();
+            valueChangePerClick[0] = int.Parse(gameManagerScript.values["Salary"].ToString());
+
+            goalVal = int.Parse(gameManagerScript.values["jobGoal"].ToString());
+        }
+    }
+
     void Start()
     {
         gameManagerScript = GameObject.Find("_gameManager").GetComponent<gameManager>();
@@ -69,10 +81,7 @@ public class ButtonScriptCustom : MonoBehaviour
         {
             int insuranceReduction = 0;
             insuranceReduction = int.Parse(gameManagerScript.values["insuranceReduction"].ToString());
-            Debug.Log(valueChangePerClickDrain[0]);
             valueChangePerClickDrain[0] -= insuranceReduction;
-            Debug.Log(valueChangePerClickDrain[0]);
-            Debug.Log(insuranceReduction);
         }
         
         //sliderObj = this.transform.Find("Slider").GetComponent<Slider>();
@@ -93,10 +102,9 @@ public class ButtonScriptCustom : MonoBehaviour
         {
             if(gameEffectNameTimerValue != 0)
             {
-                bleedSpeed = (float)bleedSpeed * float.Parse(gameManagerScript.gamevalues[gameEffectNameTimer].ToString());
+                bleedSpeed = (float)bleedSpeed * float.Parse(gameManagerScript.values[gameEffectNameTimer].ToString());
             }
-
-            Debug.Log(bleedSpeed);
+            
             coroutine = bleedValue(bleedSpeed);
             StartCoroutine(coroutine);
         }
@@ -126,7 +134,7 @@ public class ButtonScriptCustom : MonoBehaviour
 
     void changeText()
     {
-        if (typeVar != type.Dream && typeVar != type.problem)
+        if (typeVar != type.Dream && typeVar != type.problem && typeVar != type.killToProblem && typeVar != type.respoDecay)
         {
             textObj.text = currentVal + " / " + goalVal;
         }
@@ -158,9 +166,9 @@ public class ButtonScriptCustom : MonoBehaviour
             int tempGameVal = 0;
             if (gameEffectName != "N/A")
             {
-                tempGameVal = int.Parse(gameManagerScript.gamevalues[gameEffectName].ToString());
+                tempGameVal = int.Parse(gameManagerScript.values[gameEffectName].ToString());
             }
-            
+
             if (typeVar == type.problem)
             {
                 SoundManagerScript.mInstance.PlaySFX(AudioClipID.SFX_MOUSE_CLICK);
@@ -173,11 +181,11 @@ public class ButtonScriptCustom : MonoBehaviour
                         error = true;   
                     }
                 }
-
+                
                 if (!error)
                 {
                     currentVal += increaseChange + tempGameVal;
-                    
+
                     AdjustValue();
                     changeText();
                     changeSlider();
@@ -265,7 +273,15 @@ public class ButtonScriptCustom : MonoBehaviour
             gameManagerScript.applyBuff(buffEffect[i], -1 * buffEffectChange[i]);
 
         gameManagerScript.removeCriticalRespo();
-        gameManagerScript.removeResponsibility();
+        if(typeVar == type.problem)
+        {
+            gameManagerScript.removeProblems();
+        }
+        else
+        {
+            gameManagerScript.removeResponsibility();
+        }
+        
         Destroy(gameObject);
     }
 
@@ -274,7 +290,7 @@ public class ButtonScriptCustom : MonoBehaviour
         int tempGameVal = 0;
         if (gameEffectNameModifier != "N/A")
         {
-            tempGameVal = int.Parse(gameManagerScript.gamevalues[gameEffectNameModifier].ToString());
+            tempGameVal = int.Parse(gameManagerScript.values[gameEffectNameModifier].ToString());
         }
         
         if (mainValueGain[0] == 0)
