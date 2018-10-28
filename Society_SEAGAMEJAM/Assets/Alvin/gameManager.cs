@@ -14,11 +14,24 @@ public class gameManager : MonoBehaviour
     public GameObject[] responsibilityRepo;
     public GameObject[] despacitoRepo;
 
+    public GameObject[] despacitoEventRepo;
+
     public GameObject opportunityGameObj;
     public GameObject gridGameObjResponsibility;
     public GameObject gridGameObjProblems;
 
     public GameObject warningTextObj;
+
+    public Image jobImage;
+
+    public Sprite Job1Img;
+    public Sprite Job2Img;
+    public Sprite Job3Img;
+
+    public Image characterImage;
+    public Sprite CharacterJob1Img;
+    public Sprite CharacterJob2Img;
+    public Sprite CharacterJob3Img;
 
     public int age = 0;
 
@@ -39,7 +52,7 @@ public class gameManager : MonoBehaviour
         changeText("Dream", values["Dream"].ToString());
         changeText("DreamGoal", values["DreamGoal"].ToString());
 
-        values.Add("Money", 50);
+        values.Add("Money", 50000);
         changeText("Money", values["Money"].ToString());
         values.Add("Health", 18);
         values.Add("HealthCap", 80);
@@ -47,6 +60,7 @@ public class gameManager : MonoBehaviour
 
         values.Add("JobTitle", "Waiter");
         values.Add("Salary", 100);
+        values.Add("jobGoal", 25);
         values.Add("JobFluff", "Not a glorious job, but it pays");
 
 
@@ -95,7 +109,14 @@ public class gameManager : MonoBehaviour
     {
         //Debug.Log(valueName);
         //Debug.Log(values[valueName]);
+        
         values[valueName] = int.Parse(values[valueName].ToString()) + value;
+
+        if (valueName == "HealthCap")
+        {
+            valueName = "Health";
+        }
+
         changeText(valueName, values[valueName].ToString());
     }
 
@@ -124,8 +145,13 @@ public class gameManager : MonoBehaviour
             theString = "$" + theString;
         }
 
-        //Debug.Log(textName);
         textdummy = GameObject.Find(textName+"Text");
+
+        if (textName == "Health")
+        {
+            theString = values["Health"].ToString() + "/" + values["HealthCap"].ToString();
+        }
+
         textdummy.GetComponent<Text>().text = theString;
     }
 
@@ -166,6 +192,41 @@ public class gameManager : MonoBehaviour
 
         values["RespoCount"] = int.Parse(values["RespoCount"].ToString()) + 1;
         changeText("RespoCount", "Active : " + values["RespoCount"].ToString());
+    }
+
+    public void changeJob(int index)
+    {
+        switch(index)
+        {
+            case 1:
+                values["JobTitle"] = "Waiter";
+                values["Salary"] = 100;
+                values["jobGoal"] = 25;
+                values["JobFluff"] = "Not a glorious job, but it pays";
+                jobImage.sprite = Job1Img;
+                characterImage.sprite = CharacterJob1Img;
+                break;
+            case 2:
+                values["JobTitle"] = "Office";
+                values["Salary"] = 500;
+                values["jobGoal"] = 50;
+                values["JobFluff"] = "Pencil pushers get a decent pay!";
+                jobImage.sprite = Job2Img;
+                characterImage.sprite = CharacterJob2Img;
+                break;
+            case 3:
+                values["JobTitle"] = "Entrepreneur";
+                values["Salary"] = 1000;
+                values["jobGoal"] = 100;
+                values["JobFluff"] = "This is it, as big as you are gonna get";
+                jobImage.sprite = Job3Img;
+                characterImage.sprite = CharacterJob3Img;
+                break;
+        }
+
+        changeText("JobTitle", values["JobTitle"].ToString());
+        changeText("JobFluff", values["JobFluff"].ToString());
+        changeText("Salary", values["Salary"].ToString());
     }
 
     public void removeResponsibility()

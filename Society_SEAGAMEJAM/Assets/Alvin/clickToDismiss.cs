@@ -32,6 +32,9 @@ public class clickToDismiss : MonoBehaviour {
     public bool oneTimeThing;
     public int thisIndex;
 
+    public bool JobChange;
+    public int JobChangeIndex;
+
     // Use this for initialization
     void Start ()
     {
@@ -56,22 +59,37 @@ public class clickToDismiss : MonoBehaviour {
             gameManagerScript.giveResponsibility(responsibilityIndex);
         }
         
-        for (int i = 0; i < resourceOnClick.Length; i++)
+        if(JobChange)
         {
-            gameManagerScript.modifyValue(resourceOnClick[i], valueChangePerClick[i]);
+            gameManagerScript.changeJob(JobChangeIndex);
         }
         
-        //opportunitiesTitleText.text = "Opportunities";
-        //opportunitiesFluffText.text = "Opportunities come and go, but aint nothing gonna drop out of the sky for your lazy ass, go get up and go seek out some";
-
-        opButton.SetActive(true);
-
-        if(oneTimeThing)
+        bool error = false;
+        for (int i = 0; i < resourceOnClick.Length; i++)
         {
-            gameManagerScript.removeOpportunities(thisIndex);
+            if (int.Parse(gameManagerScript.values[resourceOnClick[i]].ToString()) + valueChangePerClick[i] < 0)
+            {
+                //give an error
+                error = true;
+            }
         }
 
-        Destroy(gameObject);
+        if (!error)
+        {
+            for (int i = 0; i < resourceOnClick.Length; i++)
+            {
+                gameManagerScript.modifyValue(resourceOnClick[i], valueChangePerClick[i]);
+            }
+
+            //opButton.SetActive(true);
+
+            if (oneTimeThing)
+            {
+                gameManagerScript.removeOpportunities(thisIndex);
+            }
+
+            Destroy(gameObject);
+        }
     }
     public void dismissOnClickNo()
     {

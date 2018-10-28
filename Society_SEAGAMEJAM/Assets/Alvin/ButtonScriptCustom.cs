@@ -60,8 +60,9 @@ public class ButtonScriptCustom : MonoBehaviour
         {
             Title = gameManagerScript.values["JobTitle"].ToString();
             fluffText = gameManagerScript.values["JobFluff"].ToString();
-            
             valueChangePerClick[0] = int.Parse(gameManagerScript.values["Salary"].ToString());
+
+            goalVal = int.Parse(gameManagerScript.values["jobGoal"].ToString());
         }
 
         if (typeVar == type.problem)
