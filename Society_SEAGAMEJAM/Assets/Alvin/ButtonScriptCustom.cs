@@ -25,7 +25,8 @@ public class ButtonScriptCustom : MonoBehaviour
 
     public Text TitleObj;
     public Text fluffTextObj;
-    
+    public Text costTextObj;
+
     public bool countDown;
 
     public enum type { problem, opportunity, killToProblem, FatalKill, Neutral, Dream, Job};
@@ -53,6 +54,8 @@ public class ButtonScriptCustom : MonoBehaviour
 
     void Start()
     {
+        gameManagerScript = GameObject.Find("_gameManager").GetComponent<gameManager>();
+
         if (typeVar == type.Job)
         {
             Title = gameManagerScript.values["JobTitle"].ToString();
@@ -60,15 +63,28 @@ public class ButtonScriptCustom : MonoBehaviour
             
             valueChangePerClick[0] = int.Parse(gameManagerScript.values["Salary"].ToString());
         }
+
+        if (typeVar == type.problem)
+        {
+            int insuranceReduction = 0;
+            insuranceReduction = int.Parse(gameManagerScript.values["insuranceReduction"].ToString());
+            Debug.Log(valueChangePerClickDrain[0]);
+            valueChangePerClickDrain[0] -= insuranceReduction;
+            Debug.Log(valueChangePerClickDrain[0]);
+            Debug.Log(insuranceReduction);
+        }
         
         //sliderObj = this.transform.Find("Slider").GetComponent<Slider>();
         //textObj = this.transform.Find("Count").GetComponent<Text>();
-        if(TitleObj != null)
+        if (TitleObj != null)
             TitleObj.text = Title;
 
         if (fluffTextObj != null)
             fluffTextObj.text = fluffText;
 
+        if (costTextObj != null)
+            costTextObj.text = "Cost : $"+ Mathf.Abs(valueChangePerClickDrain[0]);
+        
         changeText();
         changeSlider();
 
@@ -79,6 +95,7 @@ public class ButtonScriptCustom : MonoBehaviour
                 bleedSpeed = (float)bleedSpeed * float.Parse(gameManagerScript.gamevalues[gameEffectNameTimer].ToString());
             }
 
+            Debug.Log(bleedSpeed);
             coroutine = bleedValue(bleedSpeed);
             StartCoroutine(coroutine);
         }
@@ -92,7 +109,7 @@ public class ButtonScriptCustom : MonoBehaviour
 
     void changeSlider()
     {
-        if(typeVar != type.Dream)
+        if(typeVar != type.Dream && typeVar != type.problem)
         {
             float newVal = ((float)currentVal / (float)goalVal);
 
@@ -108,7 +125,7 @@ public class ButtonScriptCustom : MonoBehaviour
 
     void changeText()
     {
-        if (typeVar != type.Dream)
+        if (typeVar != type.Dream && typeVar != type.problem)
         {
             textObj.text = currentVal + " / " + goalVal;
         }
@@ -118,7 +135,22 @@ public class ButtonScriptCustom : MonoBehaviour
     {
         if(countDown)
         {
-            AdjustValue();
+            SoundManagerScript.mInstance.PlaySFX(AudioClipID.SFX_MOUSE_CLICK);
+            bool error = false;
+            for (int i = 0; i < resourceOnClickDrain.Length; i++)
+            {
+                if (int.Parse(gameManagerScript.values[resourceOnClickDrain[i]].ToString()) + valueChangePerClickDrain[i] < 0)
+                {
+                    //give an error
+                    error = true;
+                }
+            }
+
+            if (!error)
+            {
+                gameManagerScript.removeCriticalRespo();
+                AdjustValue();
+            }
         }
         else
         {
@@ -143,12 +175,8 @@ public class ButtonScriptCustom : MonoBehaviour
 
                 if (!error)
                 {
-                    Debug.Log(increaseChange);
-                    Debug.Log(tempGameVal);
-
                     currentVal += increaseChange + tempGameVal;
-
-                    Debug.Log(currentVal);
+                    
                     AdjustValue();
                     changeText();
                     changeSlider();
@@ -185,7 +213,15 @@ public class ButtonScriptCustom : MonoBehaviour
 
                 if (!error)
                 {
-                    currentVal += increaseChange + tempGameVal;
+                    if(increaseChange + tempGameVal > 0)
+                    {
+                        currentVal += increaseChange + tempGameVal;
+                    }
+                    else
+                    {
+                        currentVal += 0;
+                    }
+                    
                     if (currentVal >= goalVal)
                     {
                         fillBar();
@@ -227,6 +263,8 @@ public class ButtonScriptCustom : MonoBehaviour
         for (int i = 0; i < buffEffect.Length; i++)
             gameManagerScript.applyBuff(buffEffect[i], -1 * buffEffectChange[i]);
 
+        gameManagerScript.removeCriticalRespo();
+        gameManagerScript.removeResponsibility();
         Destroy(gameObject);
     }
 
@@ -237,40 +275,42 @@ public class ButtonScriptCustom : MonoBehaviour
         {
             tempGameVal = int.Parse(gameManagerScript.gamevalues[gameEffectNameModifier].ToString());
         }
-
-        for (int i = 0; i < resourceOnClick.Length; i++)
+        
+        if (mainValueGain[0] == 0)
         {
-            if (mainValueGain[i] == 1)
+            if (currentVal + valueChangePerClick[0] + tempGameVal > goalVal)
             {
-                //Debug.Log(gameManagerScript.values[resourceOnClick]);
-                gameManagerScript.modifyValue(resourceOnClick[i], valueChangePerClick[i] + tempGameVal);
+                currentVal = goalVal;
             }
-            else if (mainValueGain[i] == 0)
+            else
             {
-                if(currentVal + valueChangePerClick[i] + tempGameVal > goalVal)
-                {
-                    currentVal = goalVal;
-                }
-                else
-                {
-                    currentVal += valueChangePerClick[i] + tempGameVal;
-                }
-            }
-            else if (mainValueGain[i] == 2)
-            {
-                if (currentVal + valueChangePerClick[i] + tempGameVal > goalVal)
-                {
-                    currentVal = goalVal;
-                }
-                else
-                {
-                    currentVal += valueChangePerClick[i] + tempGameVal;
-                }
-
-                gameManagerScript.setValue(resourceOnClick[i], currentVal);
+                currentVal += valueChangePerClick[0] + tempGameVal;
             }
         }
-        
+        else
+        {
+            for (int i = 0; i < resourceOnClick.Length; i++)
+            {
+                if (mainValueGain[i] == 1)
+                {
+                    //Debug.Log(gameManagerScript.values[resourceOnClick]);
+                    gameManagerScript.modifyValue(resourceOnClick[i], valueChangePerClick[i] + tempGameVal);
+                }
+                else if (mainValueGain[i] == 2)
+                {
+                    if (currentVal + valueChangePerClick[i] + tempGameVal > goalVal)
+                    {
+                        currentVal = goalVal;
+                    }
+                    else
+                    {
+                        currentVal += valueChangePerClick[i] + tempGameVal;
+                    }
+
+                    gameManagerScript.setValue(resourceOnClick[i], currentVal);
+                }
+            }
+        }
 
         for (int i = 0; i < resourceOnClickDrain.Length; i++)
         {
@@ -287,17 +327,17 @@ public class ButtonScriptCustom : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(waitTime);
-            for (int i = 0; i < resourceOnClick.Length; i++)
+            currentVal = currentVal - valueDrain[0];
+            changeText();
+            changeSlider();
+            if (currentVal <= (float) goalVal/4.0f)
             {
-                gameManagerScript.modifyValue(resourceOnClick[i], valueDrain[i]);
-                currentVal = int.Parse(gameManagerScript.values[resourceOnClick[i]].ToString());
-                changeText();
-                changeSlider();
+                gameManagerScript.criticalRespo();
+            }
 
-                if (currentVal <= 0)
-                {
-                    emptyBar();
-                }
+            if (currentVal <= 0)
+            {
+                emptyBar();
             }
         }
     }

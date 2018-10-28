@@ -41,19 +41,26 @@ public class gameManager : MonoBehaviour
 
         values.Add("Money", 50);
         changeText("Money", "$$$ : " + values["Money"].ToString());
-        values.Add("Health", 0);
-        values.Add("HealthCap", 50);
+        values.Add("Health", 18);
+        values.Add("HealthCap", 80);
         changeText("Health", "Age : " + values["Health"].ToString() + "/" + values["HealthCap"].ToString());
 
         values.Add("JobTitle", "Dishwasher");
         values.Add("Salary", 100);
         values.Add("JobFluff", "You wash dishes for a living, it aint much, but it puts food in your belly lmao. So unless you want to starve, move those hands"+ "\n\nSalary : " + values["Salary"].ToString());
 
+
+        values.Add("ProblemsCost", 0);
+        values.Add("insuranceReduction", 0);
+
         gamevalues.Add("WorkBuff", 0);
         gamevalues.Add("WorkModifierBuff", 0);
 
         values.Add("RespoCount", 0);
-        changeText("RespoCount", "You have "+ values["RespoCount"].ToString() + " responsibilities waiting");
+        changeText("RespoCount", "Active : " + values["RespoCount"].ToString());
+
+        values.Add("ProblemCount", 0);
+        changeText("ProblemCount", "Total : " + values["ProblemCount"].ToString());
 
         coroutine = AgeUp(timeToAge);
         StartCoroutine(coroutine);
@@ -95,7 +102,7 @@ public class gameManager : MonoBehaviour
     public void applyBuff(string buffname, int value)
     {
         gamevalues[buffname] = int.Parse(gamevalues[buffname].ToString()) + value;
-        changeText(buffname, gamevalues[buffname].ToString());
+        //changeText(buffname, gamevalues[buffname].ToString());
     }
 
     public void setValue(string valueName, int value)
@@ -111,28 +118,62 @@ public class gameManager : MonoBehaviour
         {
             updateDreamBar();
         }
-
         textdummy = GameObject.Find(textName+"Text");
         textdummy.GetComponent<Text>().text = theString;
     }
 
     public void spawnOpportunity(Vector3 locationTrans, GameObject that)
     {
-        GameObject newGameObject = Instantiate(opportunityRepo[Random.Range(0, opportunityRepo.Length)], locationTrans, Quaternion.identity);
+        GameObject stuffToInstantiate = null;
+        while (stuffToInstantiate == null)
+        {
+            stuffToInstantiate = opportunityRepo[Random.Range(0, opportunityRepo.Length)];
+        }
+
+        GameObject newGameObject = Instantiate(stuffToInstantiate, locationTrans, Quaternion.identity);
         newGameObject.transform.SetParent(opportunityGameObj.transform);
         newGameObject.GetComponent<clickToDismiss>().opButton = that;
+    }
+
+    public void spawnProblems()
+    {
+        int index = 0;
+        GameObject stuffToInstantiate = null;
+        while (stuffToInstantiate == null)
+        {
+            index = Random.Range(0, despacitoRepo.Length);
+            stuffToInstantiate = despacitoRepo[index];
+        }
+
+        GameObject newGameObject = Instantiate(stuffToInstantiate, new Vector3(), Quaternion.identity);
+        newGameObject.transform.SetParent(gridGameObjProblems.transform);
+
+        values["ProblemCount"] = int.Parse(values["ProblemCount"].ToString()) + 1;
+        changeText("ProblemCount", "Total : " + values["ProblemCount"].ToString());
     }
 
     public void giveResponsibility(int index)
     {
         GameObject newGameObject = Instantiate(responsibilityRepo[index], new Vector3(), Quaternion.identity);
         newGameObject.transform.SetParent(gridGameObjResponsibility.transform);
+
+        values["RespoCount"] = int.Parse(values["RespoCount"].ToString()) + 1;
+        changeText("RespoCount", "Active : " + values["RespoCount"].ToString());
+    }
+
+    public void removeResponsibility()
+    {
+        values["RespoCount"] = int.Parse(values["RespoCount"].ToString()) - 1;
+        changeText("RespoCount", "Active : " + values["RespoCount"].ToString());
     }
 
     public void giveProblems(int index)
     {
         GameObject newGameObject = Instantiate(despacitoRepo[index], new Vector3(), Quaternion.identity);
         newGameObject.transform.SetParent(gridGameObjProblems.transform);
+
+        values["ProblemCount"] = int.Parse(values["ProblemCount"].ToString()) + 1;
+        changeText("ProblemCount", "Total : " + values["ProblemCount"].ToString());
     }
 
     public void gameOver()
@@ -143,6 +184,16 @@ public class gameManager : MonoBehaviour
     public void victory()
     {
         Debug.Log("WIN");
+    }
+
+    public void removeOpportunities(int index)
+    {
+        opportunityRepo[index] = null;
+    }
+
+    public void removeProblems(int index)
+    {
+
     }
 
     private IEnumerator AgeUp(float waitTime)
@@ -156,7 +207,7 @@ public class gameManager : MonoBehaviour
             {
                 if(disasterCount < maxDisaster)
                 {
-                    giveProblems(Random.Range(0, despacitoRepo.Length));
+                    spawnProblems();
                     disasterCount++;
                 }
             }

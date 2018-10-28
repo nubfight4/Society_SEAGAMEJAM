@@ -320,7 +320,7 @@ MonoBehaviour:
   sliderObj: {fileID: 114152496300569184}
   responsibilitySpawn: 0
   responsibilityIndex: 0
-  valueChangePerClick: e8030000
+  valueChangePerClick: 64000000
   resourceOnClick:
   - Money
   title: Getting hit on the head

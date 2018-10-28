@@ -8,6 +8,8 @@ public class openPanelScript : MonoBehaviour
     public RectTransform panel;
     public RectTransform scrollbar;
 
+    public openPanelScript panelScript;
+
     public Vector3 panelPos;
     public Vector3 scrollbarPos;
 
@@ -23,7 +25,7 @@ public class openPanelScript : MonoBehaviour
     void Start()
     {
         gameManagerScript = GameObject.Find("_gameManager").GetComponent<gameManager>();
-
+        
         oldpanelPos = panel.localPosition;
         oldscrollbarPos = scrollbar.localPosition;
     }
@@ -33,16 +35,46 @@ public class openPanelScript : MonoBehaviour
         SoundManagerScript.mInstance.PlaySFX(AudioClipID.SFX_MOUSE_CLICK);
         if(isOpen)
         {
-            gameManagerScript.changeText(name, "Open");
+            gameManagerScript.changeText(name, "OPEN");
 
             isOpen = false;
             closePanelFucnt();
+
+            gameManagerScript.removeCriticalRespo();
+        }
+        else if (!isOpen)
+        {
+            if (panelScript.isOpen)
+            {
+                panelScript.onClickChangeSpecial();
+            }
+
+            isOpen = true;
+            openPanelFucnt();
+            gameManagerScript.changeText(name, "CLOSE");
+
+            gameManagerScript.removeCriticalRespo();
+        }
+    }
+
+    public void onClickChangeSpecial()
+    {
+        if (isOpen)
+        {
+            gameManagerScript.changeText(name, "OPEN");
+
+            isOpen = false;
+            closePanelFucnt();
+
+            gameManagerScript.removeCriticalRespo();
         }
         else if (!isOpen)
         {
             isOpen = true;
             openPanelFucnt();
-            gameManagerScript.changeText(name, "Close");
+            gameManagerScript.changeText(name, "CLOSE");
+
+            gameManagerScript.removeCriticalRespo();
         }
     }
 
