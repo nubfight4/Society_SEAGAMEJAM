@@ -42,7 +42,7 @@ public class SoundManagerScript : MonoBehaviour
 
         if (mInstance == null)
         {
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
             mInstance = this;
         }
         else if (mInstance != this)

@@ -12,7 +12,7 @@ public class clickToDismiss : MonoBehaviour {
     public int goalVal;
 
     private IEnumerator coroutine;
-
+    
     public gameManager gameManagerScript;
     
     public Image sliderObj;
@@ -23,21 +23,24 @@ public class clickToDismiss : MonoBehaviour {
     public int[] valueChangePerClick = { 0 };
     public string[] resourceOnClick = { "Money" };
 
-    public string title;
-    public string flufftext;
+    //public string title;
+    //public string flufftext;
 
-    public Text opportunitiesTitleText;
-    public Text opportunitiesFluffText;
+    //public Text opportunitiesTitleText;
+    //public Text opportunitiesFluffText;
+
+    public bool oneTimeThing;
+    public int thisIndex;
 
     // Use this for initialization
     void Start ()
     {
         gameManagerScript = GameObject.Find("_gameManager").GetComponent<gameManager>();
-        opportunitiesTitleText = GameObject.Find("OpportunitiesTitle").GetComponent<Text>();
-        opportunitiesFluffText = GameObject.Find("OpportunitiesFluffText").GetComponent<Text>();
+        //opportunitiesTitleText = GameObject.Find("OpportunitiesTitle").GetComponent<Text>();
+        //opportunitiesFluffText = GameObject.Find("OpportunitiesFluffText").GetComponent<Text>();
 
-        opportunitiesTitleText.text = title;
-        opportunitiesFluffText.text = flufftext;
+        //opportunitiesTitleText.text = title;
+        //opportunitiesFluffText.text = flufftext;
 
         changeSlider();
 
@@ -47,6 +50,7 @@ public class clickToDismiss : MonoBehaviour {
 	
 	public void dismissOnClickYes()
     {
+        SoundManagerScript.mInstance.PlaySFX(AudioClipID.SFX_MOUSE_CLICK);
         if(responsibilitySpawn)
         {
             gameManagerScript.giveResponsibility(responsibilityIndex);
@@ -54,20 +58,31 @@ public class clickToDismiss : MonoBehaviour {
         
         for (int i = 0; i < resourceOnClick.Length; i++)
         {
-            //Debug.Log(gameManagerScript.values[resourceOnClick]);
             gameManagerScript.modifyValue(resourceOnClick[i], valueChangePerClick[i]);
         }
         
-        opportunitiesTitleText.text = "Opportunities";
-        opportunitiesFluffText.text = "Opportunities come and go, but aint nothing gonna drop out of the sky for your lazy ass, go get up and go seek out some";
+        //opportunitiesTitleText.text = "Opportunities";
+        //opportunitiesFluffText.text = "Opportunities come and go, but aint nothing gonna drop out of the sky for your lazy ass, go get up and go seek out some";
 
         opButton.SetActive(true);
+
+        if(oneTimeThing)
+        {
+            gameManagerScript.removeOpportunities(thisIndex);
+        }
+
         Destroy(gameObject);
     }
     public void dismissOnClickNo()
     {
-        opportunitiesTitleText.text = "Opportunities";
-        opportunitiesFluffText.text = "Opportunities come and go, but aint nothing gonna drop out of the sky for your lazy ass, go get up and go seek out some";
+        SoundManagerScript.mInstance.PlaySFX(AudioClipID.SFX_MOUSE_CLICK);
+        //opportunitiesTitleText.text = "Opportunities";
+        //opportunitiesFluffText.text = "Opportunities come and go, but aint nothing gonna drop out of the sky for your lazy ass, go get up and go seek out some";
+
+        if (oneTimeThing)
+        {
+            gameManagerScript.removeOpportunities(thisIndex);
+        }
 
         opButton.SetActive(true);
         Destroy(gameObject);
@@ -75,8 +90,13 @@ public class clickToDismiss : MonoBehaviour {
 
     public void emptyBar()
     {
-        opportunitiesTitleText.text = "Opportunities";
-        opportunitiesFluffText.text = "Opportunities come and go, but aint nothing gonna drop out of the sky for your lazy ass, go get up and go seek out some";
+        //opportunitiesTitleText.text = "Opportunities";
+        //opportunitiesFluffText.text = "Opportunities come and go, but aint nothing gonna drop out of the sky for your lazy ass, go get up and go seek out some";
+
+        if (oneTimeThing)
+        {
+            gameManagerScript.removeOpportunities(thisIndex);
+        }
 
         opButton.SetActive(true);
         Destroy(gameObject);
