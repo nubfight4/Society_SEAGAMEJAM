@@ -6,15 +6,12 @@ using UnityEngine.UI;
 public class openPanelScript : MonoBehaviour
 {
     public RectTransform panel;
-    public RectTransform scrollbar;
 
     public openPanelScript panelScript;
 
     public Vector3 panelPos;
-    public Vector3 scrollbarPos;
 
     private Vector3 oldpanelPos;
-    private Vector3 oldscrollbarPos;
 
     public bool isOpen;
 
@@ -27,7 +24,6 @@ public class openPanelScript : MonoBehaviour
         gameManagerScript = GameObject.Find("_gameManager").GetComponent<gameManager>();
         
         oldpanelPos = panel.localPosition;
-        oldscrollbarPos = scrollbar.localPosition;
     }
 
     public void onClickChange()
@@ -81,12 +77,10 @@ public class openPanelScript : MonoBehaviour
     public void openPanelFucnt()
     {
         panel.localPosition = panelPos;
-        scrollbar.localPosition = scrollbarPos;
     }
 
     public void closePanelFucnt()
     {
         panel.localPosition = oldpanelPos;
-        scrollbar.localPosition = oldscrollbarPos;
     }
 }

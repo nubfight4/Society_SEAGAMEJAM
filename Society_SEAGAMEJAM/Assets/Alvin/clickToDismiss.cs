@@ -23,11 +23,11 @@ public class clickToDismiss : MonoBehaviour {
     public int[] valueChangePerClick = { 0 };
     public string[] resourceOnClick = { "Money" };
 
-    public string title;
-    public string flufftext;
+    //public string title;
+    //public string flufftext;
 
-    public Text opportunitiesTitleText;
-    public Text opportunitiesFluffText;
+    //public Text opportunitiesTitleText;
+    //public Text opportunitiesFluffText;
 
     public bool oneTimeThing;
     public int thisIndex;
@@ -36,11 +36,11 @@ public class clickToDismiss : MonoBehaviour {
     void Start ()
     {
         gameManagerScript = GameObject.Find("_gameManager").GetComponent<gameManager>();
-        opportunitiesTitleText = GameObject.Find("OpportunitiesTitle").GetComponent<Text>();
-        opportunitiesFluffText = GameObject.Find("OpportunitiesFluffText").GetComponent<Text>();
+        //opportunitiesTitleText = GameObject.Find("OpportunitiesTitle").GetComponent<Text>();
+        //opportunitiesFluffText = GameObject.Find("OpportunitiesFluffText").GetComponent<Text>();
 
-        opportunitiesTitleText.text = title;
-        opportunitiesFluffText.text = flufftext;
+        //opportunitiesTitleText.text = title;
+        //opportunitiesFluffText.text = flufftext;
 
         changeSlider();
 
@@ -61,8 +61,8 @@ public class clickToDismiss : MonoBehaviour {
             gameManagerScript.modifyValue(resourceOnClick[i], valueChangePerClick[i]);
         }
         
-        opportunitiesTitleText.text = "Opportunities";
-        opportunitiesFluffText.text = "Opportunities come and go, but aint nothing gonna drop out of the sky for your lazy ass, go get up and go seek out some";
+        //opportunitiesTitleText.text = "Opportunities";
+        //opportunitiesFluffText.text = "Opportunities come and go, but aint nothing gonna drop out of the sky for your lazy ass, go get up and go seek out some";
 
         opButton.SetActive(true);
 
@@ -76,8 +76,8 @@ public class clickToDismiss : MonoBehaviour {
     public void dismissOnClickNo()
     {
         SoundManagerScript.mInstance.PlaySFX(AudioClipID.SFX_MOUSE_CLICK);
-        opportunitiesTitleText.text = "Opportunities";
-        opportunitiesFluffText.text = "Opportunities come and go, but aint nothing gonna drop out of the sky for your lazy ass, go get up and go seek out some";
+        //opportunitiesTitleText.text = "Opportunities";
+        //opportunitiesFluffText.text = "Opportunities come and go, but aint nothing gonna drop out of the sky for your lazy ass, go get up and go seek out some";
 
         if (oneTimeThing)
         {
@@ -90,8 +90,8 @@ public class clickToDismiss : MonoBehaviour {
 
     public void emptyBar()
     {
-        opportunitiesTitleText.text = "Opportunities";
-        opportunitiesFluffText.text = "Opportunities come and go, but aint nothing gonna drop out of the sky for your lazy ass, go get up and go seek out some";
+        //opportunitiesTitleText.text = "Opportunities";
+        //opportunitiesFluffText.text = "Opportunities come and go, but aint nothing gonna drop out of the sky for your lazy ass, go get up and go seek out some";
 
         if (oneTimeThing)
         {

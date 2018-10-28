@@ -40,14 +40,14 @@ public class gameManager : MonoBehaviour
         changeText("DreamGoal", values["DreamGoal"].ToString());
 
         values.Add("Money", 50);
-        changeText("Money", "$$$ : " + values["Money"].ToString());
+        changeText("Money", values["Money"].ToString());
         values.Add("Health", 18);
         values.Add("HealthCap", 80);
-        changeText("Health", "Age : " + values["Health"].ToString() + "/" + values["HealthCap"].ToString());
+        changeText("Health", values["Health"].ToString() + "/" + values["HealthCap"].ToString());
 
-        values.Add("JobTitle", "Dishwasher");
+        values.Add("JobTitle", "Waiter");
         values.Add("Salary", 100);
-        values.Add("JobFluff", "You wash dishes for a living, it aint much, but it puts food in your belly lmao. So unless you want to starve, move those hands"+ "\n\nSalary : " + values["Salary"].ToString());
+        values.Add("JobFluff", "Not a glorious job, but it pays");
 
 
         values.Add("ProblemsCost", 0);
@@ -118,11 +118,18 @@ public class gameManager : MonoBehaviour
         {
             updateDreamBar();
         }
+
+        if (textName == "Salary")
+        {
+            theString = "$" + theString;
+        }
+
+        //Debug.Log(textName);
         textdummy = GameObject.Find(textName+"Text");
         textdummy.GetComponent<Text>().text = theString;
     }
 
-    public void spawnOpportunity(Vector3 locationTrans, GameObject that)
+    public void spawnOpportunity(GameObject that)
     {
         GameObject stuffToInstantiate = null;
         while (stuffToInstantiate == null)
@@ -130,8 +137,8 @@ public class gameManager : MonoBehaviour
             stuffToInstantiate = opportunityRepo[Random.Range(0, opportunityRepo.Length)];
         }
 
-        GameObject newGameObject = Instantiate(stuffToInstantiate, locationTrans, Quaternion.identity);
-        newGameObject.transform.SetParent(opportunityGameObj.transform);
+        GameObject newGameObject = Instantiate(stuffToInstantiate, new Vector3(0, -178, 0), Quaternion.identity);
+        newGameObject.transform.SetParent(opportunityGameObj.transform,false);
         newGameObject.GetComponent<clickToDismiss>().opButton = that;
     }
 

@@ -244,7 +244,7 @@ public class ButtonScriptCustom : MonoBehaviour
         currentVal = 0;
         changeText();
         changeSlider();
-        gameManagerScript.spawnOpportunity(this.transform.position,gameObject);
+        gameManagerScript.spawnOpportunity(gameObject);
         gameObject.SetActive(false);
         //Destroy(gameObject);
     }

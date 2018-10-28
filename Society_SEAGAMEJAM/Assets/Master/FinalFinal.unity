@@ -779,12 +779,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5296cbdcc3a36d2498cc18df41cb92e8, type: 2}
   m_IsPrefabAsset: 0
---- !u!114 &276956734 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114742742414026600, guid: 5296cbdcc3a36d2498cc18df41cb92e8,
-    type: 2}
-  m_PrefabInternal: {fileID: 234505463}
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &280396436
 GameObject:
   m_ObjectHideFlags: 0
@@ -3221,12 +3215,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 783413187}
   m_CullTransparentMesh: 0
---- !u!114 &865211281 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114096503394516052, guid: 5296cbdcc3a36d2498cc18df41cb92e8,
-    type: 2}
-  m_PrefabInternal: {fileID: 234505463}
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &883738899
 GameObject:
   m_ObjectHideFlags: 0
@@ -3842,12 +3830,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 975896927}
   m_CullTransparentMesh: 0
---- !u!114 &982006906 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114558486088911916, guid: 5296cbdcc3a36d2498cc18df41cb92e8,
-    type: 2}
-  m_PrefabInternal: {fileID: 234505463}
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1034564181
 GameObject:
   m_ObjectHideFlags: 0
@@ -6076,12 +6058,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 0, y: -2}
   m_UseGraphicAlpha: 1
---- !u!114 &1472826854 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114892417199367888, guid: 5296cbdcc3a36d2498cc18df41cb92e8,
-    type: 2}
-  m_PrefabInternal: {fileID: 234505463}
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1475277396
 GameObject:
   m_ObjectHideFlags: 0
@@ -6356,14 +6332,14 @@ MonoBehaviour:
   gameEffectNameModifier: N/A
   gameEffectNameTimer: N/A
   increaseChange: 1
-  sliderObj: {fileID: 865211281}
-  sliderObjBase: {fileID: 276956734}
-  textObj: {fileID: 982006906}
+  sliderObj: {fileID: 1753850351}
+  sliderObjBase: {fileID: 1528277696}
+  textObj: {fileID: 2067475387}
   Title: Opportunities
   fluffText: Opportunities come and go, but aint nothing gonna drop out of the sky
     for your lazy ass, go get up and go seek out some
-  TitleObj: {fileID: 1472826854}
-  fluffTextObj: {fileID: 1961158302}
+  TitleObj: {fileID: 144346209}
+  fluffTextObj: {fileID: 1036111247}
   costTextObj: {fileID: 0}
   countDown: 0
   typeVar: 1
@@ -8468,12 +8444,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1941170710}
   m_CullTransparentMesh: 0
---- !u!114 &1961158302 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114648338778280230, guid: 5296cbdcc3a36d2498cc18df41cb92e8,
-    type: 2}
-  m_PrefabInternal: {fileID: 234505463}
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &2001935317
 Prefab:
   m_ObjectHideFlags: 0
