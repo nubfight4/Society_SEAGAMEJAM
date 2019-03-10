@@ -218,7 +218,7 @@ MonoBehaviour:
   costTextObj: {fileID: 0}
   countDown: 1
   typeVar: 2
-  problemIndex: 6
+  problemIndex: 2
   currentVal: 100
   goalVal: 100
   mainValueGain: 00000000

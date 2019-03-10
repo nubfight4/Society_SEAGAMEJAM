@@ -166,7 +166,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'YOU CAN BE REBUILT! WE HAVE THE TECHNOLOGY!
 
-    -$5000 +5 Max Age'
+    -$3000 +10 Max Age'
 --- !u!114 &114098881058726300
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -186,7 +186,7 @@ MonoBehaviour:
   sliderObj: {fileID: 114207711011570158}
   responsibilitySpawn: 0
   responsibilityIndex: 0
-  valueChangePerClick: 0500000078ecffff
+  valueChangePerClick: 0a00000048f4ffff
   resourceOnClick:
   - HealthCap
   - Money

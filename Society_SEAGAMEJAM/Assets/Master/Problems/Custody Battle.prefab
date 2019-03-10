@@ -138,7 +138,7 @@ MonoBehaviour:
   buff: 1
   buffEffect:
   - Salary
-  buffEffectChange: 0cfeffff
+  buffEffectChange: 9cffffff
 --- !u!114 &114337112947666286
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -160,7 +160,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 45c29920c850b6a40afa5fe07924190c, type: 3}
-    m_FontSize: 20
+    m_FontSize: 40
     m_FontStyle: 2
     m_BestFit: 0
     m_MinSize: 2
@@ -171,7 +171,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '- $500 to Salary'
+  m_Text: '- $100 to Salary'
 --- !u!114 &114415777723646934
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -193,7 +193,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 45c29920c850b6a40afa5fe07924190c, type: 3}
-    m_FontSize: 24
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -253,7 +253,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 45c29920c850b6a40afa5fe07924190c, type: 3}
-    m_FontSize: 20
+    m_FontSize: 40
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 2
@@ -264,7 +264,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Cost: 1000'
+  m_Text: 'Cost: $1000'
 --- !u!114 &114665854445965082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -452,8 +452,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 86, y: 5}
-  m_SizeDelta: {x: 270, y: 109.899994}
+  m_AnchoredPosition: {x: 17, y: 5}
+  m_SizeDelta: {x: 400, y: 109.899994}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!224 &224915706099561558
 RectTransform:
@@ -471,5 +471,5 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -286, y: -31}
-  m_SizeDelta: {x: 200, y: 40}
+  m_SizeDelta: {x: 300, y: 40}
   m_Pivot: {x: 0, y: 1}

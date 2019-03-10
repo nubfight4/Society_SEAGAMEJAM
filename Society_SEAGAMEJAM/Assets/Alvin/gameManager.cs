@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class gameManager : MonoBehaviour
 {
@@ -54,7 +55,7 @@ public class gameManager : MonoBehaviour
     void Awake()
     {
         values.Add("Dream", 0);
-        values.Add("DreamGoal", 1000);
+        values.Add("DreamGoal", 2000);
         changeText("Dream", values["Dream"].ToString());
         changeText("DreamGoal", values["DreamGoal"].ToString());
 
@@ -64,10 +65,10 @@ public class gameManager : MonoBehaviour
         values.Add("HealthCap", 75);
         changeText("Health", values["Health"].ToString() + "/" + values["HealthCap"].ToString());
 
-        values.Add("JobTitle", "NEET");
+        values.Add("JobTitle", "Unemployed");
         values.Add("Salary", 0);
-        values.Add("jobGoal", 100);
-        values.Add("JobFluff", "Wasting money, wasting time");
+        values.Add("jobGoal", 0);
+        values.Add("JobFluff", "Search for a job in Opportunity!");
         changeText("Salary", values["Salary"].ToString());
 
 
@@ -121,10 +122,15 @@ public class gameManager : MonoBehaviour
         //Debug.Log(values[valueName]);
         
         values[valueName] = int.Parse(values[valueName].ToString()) + value;
-
+        
         if (valueName == "HealthCap")
         {
             valueName = "Health";
+        }
+
+        if (int.Parse(values["Dream"].ToString()) >= int.Parse(values["DreamGoal"].ToString()))
+        {
+            victory();
         }
 
         changeText(valueName, values[valueName].ToString());
@@ -216,23 +222,23 @@ public class gameManager : MonoBehaviour
                 values["JobTitle"] = "Waiter";
                 values["Salary"] = 100;
                 values["jobGoal"] = 10;
-                values["JobFluff"] = "Not a glorious job, but it pays";
+                values["JobFluff"] = "Not the most fulfilling, but it’s easy.";
                 jobImage.sprite = Job1Img;
                 characterImage.sprite = CharacterJob1Img;
                 break;
             case 2:
                 values["JobTitle"] = "Office";
-                values["Salary"] = 500;
+                values["Salary"] = 300;
                 values["jobGoal"] = 20;
-                values["JobFluff"] = "Pencil pushers get a decent pay!";
+                values["JobFluff"] = "A regular 9 to 5 job. The pay’s decent!";
                 jobImage.sprite = Job2Img;
                 characterImage.sprite = CharacterJob2Img;
                 break;
             case 3:
                 values["JobTitle"] = "Entrepreneur";
-                values["Salary"] = 2500;
+                values["Salary"] = 1000;
                 values["jobGoal"] = 50;
-                values["JobFluff"] = "This is it, as big as you are gonna get";
+                values["JobFluff"] = "A risky venture with the promise of big bucks!";
                 jobImage.sprite = Job3Img;
                 characterImage.sprite = CharacterJob3Img;
                 break;
@@ -268,7 +274,7 @@ public class gameManager : MonoBehaviour
 
     public void victory()
     {
-        Debug.Log("WIN");
+        SceneManager.LoadScene("Win Screen");
     }
 
     public void removeOpportunities(int index)
@@ -302,7 +308,7 @@ public class gameManager : MonoBehaviour
 
             if (int.Parse(values["Health"].ToString()) >= int.Parse(values["HealthCap"].ToString()))
             {
-                Debug.Log("You Dea my boiiii");
+                SceneManager.LoadScene("Lose Screen");
             }
         }
     }

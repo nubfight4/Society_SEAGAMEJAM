@@ -17,4 +17,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Master/FinalFinal.unity
     guid: 51edaee85b2b5df4dad04eb77c8b8297
+  - enabled: 1
+    path: Assets/Naren/Win Screen.unity
+    guid: 60d5a7772ab998d4299fd655d4c7f89e
+  - enabled: 1
+    path: Assets/Naren/Lose Screen.unity
+    guid: 348e0dcc9766d6b4a9de0ffa2b4a9cef
+  - enabled: 1
+    path: Assets/Master/FinalFinalFemale.unity
+    guid: da30c3ee62dbb294c81ee24417057202
+  - enabled: 1
+    path: Assets/Master/chooseCharacter.unity
+    guid: dc33628dc6280e5438df7758a6bfaaba
   m_configObjects: {}
